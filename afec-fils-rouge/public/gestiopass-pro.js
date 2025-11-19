@@ -1,10 +1,10 @@
 /* gestiopass.pro.optimized.js — version améliorée
-   - Forcage d'au moins un caractère par classe sélectionnée
-   - Multi-delete (checkbox + bouton au-dessus du tableau)
-   - Event delegation pour actions table
-   - Nettoyage des doublons, meilleure organisation
-   - Argon2 fallback PBKDF2
-   - Clipboard clear retries, session & inactivity lock
+    - Forcage d'au moins un caractère par classe sélectionnée
+    - Multi-delete (checkbox + bouton au-dessus du tableau)
+    - Event delegation pour actions table
+    - Nettoyage des doublons, meilleure organisation
+    - Argon2 fallback PBKDF2
+    - Clipboard clear retries, session & inactivity lock
 */
 document.addEventListener('DOMContentLoaded', async () => {
     // ====== CONFIG ======

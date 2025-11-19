@@ -26,6 +26,79 @@ document.addEventListener("DOMContentLoaded", () => {
   if (closeSidebarBtn) closeSidebarBtn.addEventListener('click', closeSidebar);
   if (overlay) overlay.addEventListener('click', closeSidebar);
 
+  /* ============================
+    TABS PARAMÈTRES
+  ============================ */
+  const tabButtons = document.querySelectorAll(".tab-btn");
+  const tabContents = document.querySelectorAll(".tab-content");
+
+  tabButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const tab = btn.getAttribute("data-tab");
+
+      tabButtons.forEach(b => b.classList.remove("active", "bg-bbh-accent", "text-bbh-dark"));
+      tabContents.forEach(c => c.classList.add("hidden"));
+
+      btn.classList.add("active", "bg-bbh-accent", "text-bbh-dark");
+      document.getElementById(tab).classList.remove("hidden");
+    });
+  });
+
+
+
+  /* ============================
+     2FA: QR + OTP
+  ============================ */
+  const twofaCheckbox = document.getElementById("twofa");
+  const twofaSetup = document.getElementById("twofa-setup");
+  const qrCanvas = document.getElementById("qrCodeCanvas");
+  const otpCodeElement = document.getElementById("otpCode");
+  const otpTimerElement = document.getElementById("otpTimer");
+
+  let otpTimer = 30;
+  let otpSecret = "BBH-2FA-SECRET";
+  let intervalOTP;
+
+  if (twofaCheckbox) {
+    twofaCheckbox.addEventListener("change", () => {
+      if (twofaCheckbox.checked) {
+        twofaSetup.classList.remove("hidden");
+        QRCode.toCanvas(qrCanvas, "otpauth://totp/BBH?secret=" + otpSecret);
+        generateOTP();
+        startOtpTimer();
+      } else {
+        twofaSetup.classList.add("hidden");
+        stopOtpTimer();
+      }
+    });
+  }
+
+
+  function generateOTP() {
+    const otp = Math.floor(100000 + Math.random() * 900000);
+    otpCodeElement.textContent = otp;
+  }
+
+  function startOtpTimer() {
+    otpTimer = 30;
+    otpTimerElement.textContent = otpTimer;
+    intervalOTP = setInterval(() => {
+      otpTimer--;
+      otpTimerElement.textContent = otpTimer;
+      if (otpTimer <= 0) {
+        generateOTP();
+        otpTimer = 30;
+      }
+    }, 1000);
+  }
+
+  function stopOtpTimer() {
+    clearInterval(intervalOTP);
+  }
+
+
+  
+
   // ===============================
   // Wizard multi-étapes
   // ===============================
@@ -220,19 +293,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const genBtn = document.createElement("button");
     genBtn.type = "button";
-    genBtn.className = "bg-sky-500 hover:bg-sky-600 text-slate-900 font-semibold rounded px-3 py-2";
+    genBtn.className = "bg-sky-500 hover:bg-sky-600 text-slate-900 font-semibold rounded px-3 py-2 cursor-pointer";
     genBtn.textContent = "Générer";
 
     const copyBtn = document.createElement("button");
     copyBtn.type = "button";
     copyBtn.id = "copy-pw";
-    copyBtn.className = "bg-slate-600 text-slate-200 rounded px-3 py-2";
+    copyBtn.className = "bg-slate-600 text-slate-200 rounded px-3 py-2 cursor-pointer hover:bg-sky-500";
     copyBtn.textContent = "Copier";
     copyBtn.disabled = true;
 
     const toggleBtn = document.createElement("button");
     toggleBtn.type = "button";
-    toggleBtn.className = "bg-slate-700 text-slate-200 rounded px-3 py-2";
+    toggleBtn.className = "bg-slate-700 text-slate-200 rounded px-3 py-2 cursor-pointer hover:bg-sky-500";
     toggleBtn.textContent = "Afficher";
 
     toolbar.appendChild(genBtn);

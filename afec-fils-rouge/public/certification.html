@@ -23,10 +23,15 @@
 
         <!-- Navigation desktop -->
         <nav class="hidden md:flex gap-6" aria-label="Menu navigation header font-sans">
-            <a href="à_propos.html" class="hover:text-sky-400 font-bold font-sans">À propos</a>
-            <a href="Téléchargement.html" class="hover:text-sky-400 font-bold font-sans">Téléchargement</a>
-            <a href="contact.html" class="hover:text-sky-400 font-bold font-sans">Contact</a>
-            <a href="certification.html" class="hover:text-sky-400 font-bold font-sans">Certification</a>
+            <a href="index.html" class="hover:text-sky-400 font-bold font-sans"
+                aria-label="Retour à l'accueil">Accueil</a>
+            <a href="à_propos.html" class="hover:text-sky-400 font-bold font-sans" aria-label="Menu à propos">À
+                propos</a>
+            <a href="Téléchargement.html" class="hover:text-sky-400 font-bold font-sans"
+                aria-label="Menu Téléchargement">Téléchargement</a>
+            <a href="contact.html" class="hover:text-sky-400 font-bold font-sans" aria-label="Menu contact">Contact</a>
+            <a href="certification.html" class="hover:text-sky-400 font-bold font-sans"
+                aria-label="Mene certification">Certification</a>
         </nav>
 
         <!-- Burger + user -->
@@ -49,8 +54,9 @@
         transition-all duration-300 overflow-y-auto" aria-label="Sidebar de navigation">
 
         <!-- Bouton fermer -->
-        <button id="closeSidebar" class="self-end text-white text-3xl mb-4 hover:text-sky-400 focus:outline-none"
-            aria-label="Fermer le sidebar">
+        <button id="closeSidebar"
+            class="self-end text-white text-3xl mb-4 hover:text-sky-400 focus:outline-none cursor-pointer"
+            aria-label="Fermer la sidebar">
             ×
         </button>
 
@@ -67,15 +73,16 @@
                 <input type="text" id="username" name="username" required pattern="[A-Za-z0-9]+" minlength="3"
                     maxlength="20" autocomplete="off"
                     class="w-full p-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-sky-400"
-                    placeholder="Votre identifiant" aria-label="Identifiant">
+                    placeholder="Votre identifiant" aria-label="Champ de saisi pour l'identifiant">
 
                 <label class="text-gray-200 text-sm" for="password">Mot de passe</label>
                 <input type="password" id="password" name="password" required
                     class="w-full p-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-sky-400"
-                    placeholder="Votre mot de passe" aria-label="Mot de passe">
+                    placeholder="Votre mot de passe" aria-label="Champ du mot de passe">
 
                 <button type="submit"
-                    class="w-full mt-3 p-2 bg-blue-600 text-black font-semibold rounded hover:bg-white transition">
+                    class="w-full mt-3 p-2 bg-blue-600 text-black font-semibold rounded hover:bg-cyan-500 transition cursor-pointer"
+                    aria-label="Bouton de connexion">
                     Se connecter
                 </button>
             </form>
@@ -86,9 +93,10 @@
         <hr class="mt-4 ">
 
         <!-- Liens -->
-        <ul class="mt-6 mb-9 flex flex-col gap-4 text-center sm:text-left ">
-            <li>
-                <a href="bbhmain.htm" class="flex items-center gap-2 text-gray-100 hover:text-sky-400 transition-colors">
+        <ul class="mt-6 mb-9 flex-col gap-4 text-center sm:text-left flex">
+            <li class="sm:hidden">
+                <a href="index.html"
+                    class="flex items-center gap-2 text-gray-100 hover:text-sky-400 transition-colors ">
                     <svg class="w-7 h-7 fill-white hover:fill-sky-400 transition-colors duration-300 cursor-pointer"
                         viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -101,7 +109,7 @@
                     </svg></span> Accueil
                 </a>
             </li>
-            <li>
+            <li class="sm:hidden">
                 <a href="à_propos.html"
                     class="flex items-center gap-2 text-gray-100 hover:text-sky-400 transition-colors">
                     <span><svg
@@ -117,7 +125,7 @@
                         </svg></span> À propos
                 </a>
             </li>
-            <li>
+            <li class="sm:hidden">
                 <a href="Téléchargement.html"
                     class="flex items-center gap-2 text-gray-100 hover:text-sky-400 transition-colors">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
@@ -129,7 +137,7 @@
                     </span> Téléchargement
                 </a>
             </li>
-            <li>
+            <li class="sm:hidden">
                 <a href="contact.html"
                     class="flex items-center gap-2 text-gray-100 hover:text-sky-400 transition-colors">
                     <svg class="w-6 h-6 fill-white hover:fill-sky-400 transition-colors duration-300 cursor-pointer"
@@ -141,7 +149,7 @@
                     </span> Contact
                 </a>
             </li>
-            <li>
+            <li class="sm:hidden">
                 <a href="certification.html"
                     class="flex items-center gap-2 text-gray-100 hover:text-sky-400 transition-colors">
                     <span><svg
@@ -201,6 +209,59 @@
     <!-- Main Content -->
     <main class="flex-1 pt-16 px-6 py-8">
 
+        <!-- Cartes de certifications -->
+        <div class="cards justify-center flex-wrap gap-6">
+
+            <!-- Titre et intro -->
+            <h1 class="text-3xl md:text-4xl text-center text-cyan-500 font-semibold mb-6">
+                Nos Certifications
+            </h1>
+            <p class="text-center max-w-3xl mx-auto mb-10 text-gray-300 text-lg">
+                BBH est certifié selon les standards les plus élevés en matière de sécurité, de qualité et de
+                conformité.
+                Chaque certification atteste de notre engagement envers l’excellence et la fiabilité de nos services.
+            </p>
+
+            <!-- Cartes de certifications -->
+            <div class="flex flex-wrap justify-center gap-6">
+
+                <!-- Carte exemple -->
+                <div
+                    class="bg-slate-800 rounded-xl p-6 shadow-lg flex flex-col items-center text-center w-80 transition-transform transform hover:-translate-y-2 hover:shadow-2xl">
+                    <h3 class="text-cyan-500 text-xl font-semibold mb-2">ISO 27001</h3>
+                    <p class="text-gray-300 text-sm mb-4">
+                        Certification internationale attestant de la sécurité de l’information et de la gestion des
+                        risques.
+                    </p>
+                    <span class="bg-cyan-500/20 text-cyan-500 px-4 py-1 rounded-full text-sm font-bold">
+                        Valide
+                    </span>
+                </div>
+
+                <div
+                    class="bg-slate-800 rounded-xl p-6 shadow-lg flex flex-col items-center text-center w-80 transition-transform transform hover:-translate-y-2 hover:shadow-2xl">
+                    <h3 class="text-cyan-500 text-xl font-semibold mb-2">RGPD</h3>
+                    <p class="text-gray-300 text-sm mb-4">
+                        Conformité avec le Règlement Général sur la Protection des Données pour protéger les
+                        informations personnelles.
+                    </p>
+                    <span class="bg-cyan-500/20 text-cyan-500 px-4 py-1 rounded-full text-sm font-bold">
+                        Valide
+                    </span>
+                </div>
+
+                <div
+                    class="bg-slate-800 rounded-xl p-6 shadow-lg flex flex-col items-center text-center w-80 transition-transform transform hover:-translate-y-2 hover:shadow-2xl">
+                    <h3 class="text-cyan-500 text-xl font-semibold mb-2">AWS Security</h3>
+                    <p class="text-gray-300 text-sm mb-4">
+                        Certification de sécurité sur l’utilisation des services cloud Amazon Web Services.
+                    </p>
+                    <span class="bg-cyan-500/20 text-cyan-500 px-4 py-1 rounded-full text-sm font-bold">
+                        Valide
+                    </span>
+                </div>
+
+            </div>
     </main>
 
     <!-- FOOTER -->
@@ -208,15 +269,15 @@
         class="bg-slate-800/90 backdrop-blur flex flex-col sm:flex-row items-center justify-between px-4 py-4 text-sm w-full z-30">
         <p>© 2025 BBH - Tous droits réservés</p>
         <div class="flex items-center gap-3 mt-2 sm:mt-0">
-            <a href="mentions_legales.html" class="hover:text-sky-400">Mentions légales</a>
-            <a href="politique_de_confidentialité.html" class="hover:text-sky-400">Confidentialité</a>
+            <a href="mentions_legales.html" class="hover:text-sky-400" aria-label="Mentions légales">Mentions légales</a>
+            <a href="politique_de_confidentialité.html" class="hover:text-sky-400" aria-label="Confidentialité">Confidentialité</a>
             <a href="https://github.com/Koraya964/" target="_blank"><img src="images/git hub 32x32.png" class="h-5"
-                    alt="github.com"></a>
+                    alt="github.com" aria-label="GitHub de l'auteur"></a>
             <a href="https://fr.linkedin.com/" target="_blank"><img src="images/linkedin 32x32.png" class="h-5"
-                    alt="linkedin.com"></a>
+                    alt="linkedin.com" aria-label="linkedin de l'auteur"></a>
             <a href="https://x.com" target="_blank"><img src="images/X-32x32v1.png" class="h-5" alt="X.com"></a>
             <a href="https://koraya.netlify.app/" target="_blank"><img src="images/logo_koraya_mini.png" class="h-5"
-                    alt="KorayaWebsite"></a>
+                    alt="KorayaWebsite" aria-label="Site photo de l'auteur"></a>
         </div>
     </footer>
 

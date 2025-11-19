@@ -24,10 +24,14 @@
 
         <!-- Navigation desktop -->
         <nav class="hidden md:flex gap-6" aria-label="Menu navigation header font-sans">
-            <a href="à_propos.html" class="hover:text-sky-400 font-bold font-sans">À propos</a>
-            <a href="Téléchargement.html" class="hover:text-sky-400 font-bold font-sans">Téléchargement</a>
-            <a href="contact.html" class="hover:text-sky-400 font-bold font-sans">Contact</a>
-            <a href="certification.html" class="hover:text-sky-400 font-bold font-sans">Certification</a>
+            <a href="index.html" class="hover:text-sky-400 font-bold font-sans" aria-label="Retour à l'accueil">Accueil</a>
+            <a href="à_propos.html" class="hover:text-sky-400 font-bold font-sans" aria-label="Menu à propos">À
+                propos</a>
+            <a href="Téléchargement.html" class="hover:text-sky-400 font-bold font-sans"
+                aria-label="Menu Téléchargement">Téléchargement</a>
+            <a href="contact.html" class="hover:text-sky-400 font-bold font-sans" aria-label="Menu contact">Contact</a>
+            <a href="certification.html" class="hover:text-sky-400 font-bold font-sans"
+                aria-label="Mene certification">Certification</a>
         </nav>
 
         <!-- Burger + user -->
@@ -50,8 +54,9 @@
         transition-all duration-300 overflow-y-auto" aria-label="Sidebar de navigation">
 
         <!-- Bouton fermer -->
-        <button id="closeSidebar" class="self-end text-white text-3xl mb-4 hover:text-sky-400 focus:outline-none"
-            aria-label="Fermer le sidebar">
+        <button id="closeSidebar"
+            class="self-end text-white text-3xl mb-4 hover:text-sky-400 focus:outline-none cursor-pointer"
+            aria-label="Fermer la sidebar">
             ×
         </button>
 
@@ -68,15 +73,16 @@
                 <input type="text" id="username" name="username" required pattern="[A-Za-z0-9]+" minlength="3"
                     maxlength="20" autocomplete="off"
                     class="w-full p-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-sky-400"
-                    placeholder="Votre identifiant" aria-label="Identifiant">
+                    placeholder="Votre identifiant" aria-label="Champ de saisi pour l'identifiant">
 
                 <label class="text-gray-200 text-sm" for="password">Mot de passe</label>
                 <input type="password" id="password" name="password" required
                     class="w-full p-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-sky-400"
-                    placeholder="Votre mot de passe" aria-label="Mot de passe">
+                    placeholder="Votre mot de passe" aria-label="Champ du mot de passe">
 
                 <button type="submit"
-                    class="w-full mt-3 p-2 bg-blue-600 text-black font-semibold rounded hover:bg-white transition">
+                    class="w-full mt-3 p-2 bg-blue-600 text-black font-semibold rounded hover:bg-white transition"
+                    aria-label="Bouton de connexion">
                     Se connecter
                 </button>
             </form>
@@ -87,9 +93,10 @@
         <hr class="mt-4 ">
 
         <!-- Liens -->
-        <ul class="mt-6 mb-9 flex flex-col gap-4 text-center sm:text-left ">
-            <li>
-                <a href="bbhmain.htm" class="flex items-center gap-2 text-gray-100 hover:text-sky-400 transition-colors">
+        <ul class="mt-6 mb-9 flex-col gap-4 text-center sm:text-left flex ">
+            <li class="sm:hidden">
+                <a href="index.html"
+                    class="flex items-center gap-2 text-gray-100 hover:text-sky-400 transition-colors ">
                     <svg class="w-7 h-7 fill-white hover:fill-sky-400 transition-colors duration-300 cursor-pointer"
                         viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -102,7 +109,7 @@
                     </svg></span> Accueil
                 </a>
             </li>
-            <li>
+            <li class="sm:hidden">
                 <a href="à_propos.html"
                     class="flex items-center gap-2 text-gray-100 hover:text-sky-400 transition-colors">
                     <span><svg
@@ -118,7 +125,7 @@
                         </svg></span> À propos
                 </a>
             </li>
-            <li>
+            <li class="sm:hidden">
                 <a href="Téléchargement.html"
                     class="flex items-center gap-2 text-gray-100 hover:text-sky-400 transition-colors">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
@@ -130,7 +137,7 @@
                     </span> Téléchargement
                 </a>
             </li>
-            <li>
+            <li class="sm:hidden">
                 <a href="contact.html"
                     class="flex items-center gap-2 text-gray-100 hover:text-sky-400 transition-colors">
                     <svg class="w-6 h-6 fill-white hover:fill-sky-400 transition-colors duration-300 cursor-pointer"
@@ -142,7 +149,7 @@
                     </span> Contact
                 </a>
             </li>
-            <li>
+            <li class="sm:hidden">
                 <a href="certification.html"
                     class="flex items-center gap-2 text-gray-100 hover:text-sky-400 transition-colors">
                     <span><svg
@@ -207,8 +214,7 @@
         <section class="bg-gray-800 rounded-xl p-6 shadow-lg text-center">
             <h2 class="text-2xl font-bold text-custom-blue mb-4">Contact Rapide / Problème urgent</h2>
             <p class="mb-4 text-gray-300">Problème urgent ? Envoyez-nous un message rapide.</p>
-            <form id="help-form"
-                class="space-y-4">
+            <form id="help-form" class="space-y-4">
                 <input type="text" placeholder="Identifiant Publique"
                     class="w-full p-3 rounded bg-gray-700 text-white  invalid:border-red-700 invalid:text-white focus:border-sky-500 focus:outline focus:outline-sky-500 focus:invalid:border-red-700 focus:invalid:outline-red-700 disabled:border-gray-200 disabled:bg-gray-50 disabled:text-gray-500 disabled:shadow-none dark:disabled:border-gray-700 dark:disabled:bg-gray-800/20"
                     required minlength="8" maxlength="64">
@@ -219,7 +225,7 @@
                     class="w-full p-3 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-custom-blue"
                     rows="5" maxlength="255" required></textarea>
                 <button type="submit"
-                    class="w-full bg-cyan-400 text-black font-bold py-2 rounded hover:bg-blue-600 transition">Envoyer</button>
+                    class="w-full bg-cyan-400 text-black font-bold py-2 rounded hover:bg-blue-600 transition cursor-pointer">Envoyer</button>
                 <p id="sos-message" class="text-green-400 font-semibold"></p>
             </form>
         </section>
@@ -228,7 +234,8 @@
         <section class="bg-gray-800 rounded-xl p-6 shadow-lg">
             <h2 class="text-2xl font-bold text-custom-blue mb-4 text-center">Feedback sur BBH</h2>
             <p class="mb-6 text-center text-gray-300">Donnez votre avis sur l’ergonomie, le design et le contenu.</p>
-            <form id="multi-rating-form" name="multi-rating-form" class="space-y-6" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+            <form id="multi-rating-form" name="multi-rating-form" class="space-y-6" method="POST" data-netlify="true"
+                netlify-honeypot="bot-field">
 
                 <!-- Ergonomie -->
                 <div>
@@ -267,8 +274,8 @@
                 </div>
 
                 <button type="submit"
-                    class="w-full bg-cyan-500 text-black font-bold py-2 rounded hover:bg-blue-600 transition">
-                    Envoyez votre Feedback
+                    class="w-full bg-cyan-500 text-black font-bold py-2 rounded hover:bg-blue-600 transition cursor-pointer">
+                    Envoyer
                 </button>
                 <p id="message" class="mt-4 text-green-400 text-center font-semibold"></p>
             </form>
@@ -279,10 +286,14 @@
             <h2 class="text-2xl font-bold text-custom-blue mb-4 text-center"> Aide & FAQ</h2>
             <ul class="space-y-3 text-gray-300">
                 <li> Comment réinitialiser mon mot de passe ? <a href="mdr_reset.html"
+                        aria-label="Savoir comment modifier votre mot de passe"
                         class="text-custom-blue underline hover:text-cyan-600">Voir la réponse</a></li>
                 <li> Comment télécharger BBH ? <a href="Téléchargement.html"
+                        aria-label="Aide au téléchargement de l'app bbh"
                         class="text-custom-blue underline hover:text-cyan-600">Voir la réponse</a></li>
-                <li> Où trouver mes documents ? <a href="client_doc.html" class="text-custom-blue underline hover:text-cyan-600">Voir
+                <li> Où trouver mes documents ? <a href="client_doc.html"
+                        class="text-custom-blue underline hover:text-cyan-600"
+                        aria-label="comment récupérer vos documents">Voir
                         la réponse</a></li>
             </ul>
             <p class="mt-4 text-gray-400 text-sm text-center">Pour tout problème non listé, utilisez la section
@@ -295,15 +306,15 @@
         class="bg-slate-800/90 backdrop-blur flex flex-col sm:flex-row items-center justify-between px-4 py-4 text-sm w-full z-30">
         <p>© 2025 BBH - Tous droits réservés</p>
         <div class="flex items-center gap-3 mt-2 sm:mt-0">
-            <a href="mentions_legales.html" class="hover:text-sky-400">Mentions légales</a>
-            <a href="politique_de_confidentialité.html" class="hover:text-sky-400">Confidentialité</a>
+            <a href="mentions_legales.html" class="hover:text-sky-400" aria-label="Mentions légales">Mentions légales</a>
+            <a href="politique_de_confidentialité.html" class="hover:text-sky-400" aria-label="Confidentialité">Confidentialité</a>
             <a href="https://github.com/Koraya964/" target="_blank"><img src="images/git hub 32x32.png" class="h-5"
-                    alt="github.com"></a>
+                    alt="github.com" aria-label="GitHub de l'auteur"></a>
             <a href="https://fr.linkedin.com/" target="_blank"><img src="images/linkedin 32x32.png" class="h-5"
-                    alt="linkedin.com"></a>
+                    alt="linkedin.com" aria-label="linkedin de l'auteur"></a>
             <a href="https://x.com" target="_blank"><img src="images/X-32x32v1.png" class="h-5" alt="X.com"></a>
             <a href="https://koraya.netlify.app/" target="_blank"><img src="images/logo_koraya_mini.png" class="h-5"
-                    alt="KorayaWebsite"></a>
+                    alt="KorayaWebsite" aria-label="Site photo de l'auteur"></a>
         </div>
     </footer>
 
