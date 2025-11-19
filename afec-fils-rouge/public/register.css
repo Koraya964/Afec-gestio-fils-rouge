@@ -1,0 +1,71 @@
+/* ===============================
+   Transitions douces entre étapes
+   =============================== */
+.step {
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.step.hidden {
+    opacity: 0;
+    transform: translateX(30px);
+    pointer-events: none;
+}
+
+.step:not(.hidden) {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+}
+
+/* Feedback visuel des champs */
+input:invalid {
+    border-color: #ef4444;
+    background-color: #2c2f3b;
+}
+
+input:valid {
+    border-color: #22c55e;
+}
+
+/* Animation des messages d’erreur / confirmation */
+#confirm-msg {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+#confirm-msg.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#confirm-msg.hide {
+    opacity: 0;
+    transform: translateY(-5px);
+}
+
+/* Shake pour les erreurs sur bouton next */
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    20%,
+    60% {
+        transform: translateX(-5px);
+    }
+
+    40%,
+    80% {
+        transform: translateX(5px);
+    }
+}
+
+button.shake {
+    animation: shake 0.3s;
+}
+
+/* Progression animée */
+#progress {
+    transition: width 0.5s ease;
+}

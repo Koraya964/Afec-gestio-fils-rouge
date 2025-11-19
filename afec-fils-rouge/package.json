@@ -1,0 +1,25 @@
+{
+  "name": "afec-fils-rouge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build-css": "npx tailwindcss -i ./src/output.css -o ./public/styletailwind.css --minify",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Koraya964/Afec-fils-rouge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Koraya964/Afec-fils-rouge/issues"
+  },
+  "homepage": "https://github.com/Koraya964/Afec-fils-rouge#readme",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.16",
+    "express": "^5.1.0",
+    "tailwindcss": "^4.1.16"
+  }
+}
