@@ -113,6 +113,7 @@ Responsive design (mobile → desktop)
 - Politique de confidentialité
 
 # Structure du projet
+```
 /public
     /assets
         /css
@@ -136,7 +137,7 @@ mot_espace.html
 mot_de_passe.html
 ETC...
 README.md
-
+```
 # AUTEUR 
 
 Projet réalisé par Julien R. (alias Koraya964)
