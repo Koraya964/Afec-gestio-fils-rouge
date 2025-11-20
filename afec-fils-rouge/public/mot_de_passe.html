@@ -8,9 +8,9 @@
     <link rel="icon" type="image/png" sizes="32x32" href="images/BBH-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="images/BBH-16x16.png">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
-    <script src="js/gestiopass-pro.js" defer></script>
-    <script src="js/script.js"></script>
-    <link href="assets/css/styletailwind.css" rel="stylesheet">
+    <script src="JS Doc/gestiopass-pro.js" defer></script>
+    <script src="JS Doc/script.js"></script>
+    <link href="ressources graphique/css/styletailwind.css" rel="stylesheet">
     
 </head>
 
@@ -83,7 +83,7 @@
                         </div>
 
                         <button id="generateBtn" type="button"
-                            class="px-3 py-2 rounded bg-cyan-500 text-slate-900 font-semibold hover:bg-cyan-400 transition">
+                            class="px-3 py-2 rounded bg-cyan-500 text-slate-900 font-semibold hover:bg-cyan-400 transition cursor-pointer">
                             Générer
                         </button>
                     </div>
@@ -101,11 +101,11 @@
 
                     <label class="block text-sm text-slate-300 mt-2" for="Longueur">Longueur: <span id="lenLabel"
                             class="font-medium text-cyan-300">16</span></label>
-                    <input id="lengthRange" type="range" min="8" max="64" value="16" class="w-full" name="Longueur" />
+                    <input id="lengthRange" type="range" min="8" max="64" value="16" class="w-full" name="Longueur" class="cursor-pointer" />
 
                     <div class="flex gap-2 mt-3">
                         <button id="addBtn"
-                            class="w-full px-3 py-2 rounded bg-emerald-500 text-slate-900 font-semibold hover:bg-emerald-400">Ajouter
+                            class="w-full px-3 py-2 rounded bg-emerald-500 text-slate-900 font-semibold hover:bg-emerald-400 cursor-pointer">Ajouter
                             au coffre</button>
                     </div>
                     <div class="mt-3">

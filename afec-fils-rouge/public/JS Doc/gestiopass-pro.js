@@ -446,9 +446,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             <td class="px-3 py-3 break-all"><span class="pw-span" data-id="${entry.id}">${mask(entry.password)}</span></td>
             <td class="px-3 py-3">
                 <div class="flex gap-2">
-                    <button class="showBtn px-2 py-1 rounded bg-slate-700 hover:bg-slate-600 text-xs" data-action="show" data-id="${entry.id}" aria-label="Bouton afficher">Afficher</button>
-                    <button class="copyBtn px-2 py-1 rounded bg-cyan-600 hover:bg-cyan-500 text-xs" data-action="copy" data-id="${entry.id}" aria-label="Bouton copier pour 5 secondes">Copier</button>
-                    <button class="delBtn px-2 py-1 rounded bg-rose-600 hover:bg-rose-500 text-xs" data-action="del" data-id="${entry.id}" aria-label="Bouton supprimer">Suppr</button>
+                    <button class="showBtn px-2 py-1 rounded bg-slate-700 hover:bg-slate-600 text-xs cursor-pointer" data-action="show" data-id="${entry.id}" aria-label="Bouton afficher">Afficher</button>
+                    <button class="copyBtn px-2 py-1 rounded bg-cyan-600 hover:bg-cyan-500 text-xs cursor-pointer" data-action="copy" data-id="${entry.id}" aria-label="Bouton copier pour 5 secondes">Copier</button>
+                    <button class="delBtn px-2 py-1 rounded bg-rose-600 hover:bg-rose-500 text-xs cursor-pointer" data-action="del" data-id="${entry.id}" aria-label="Bouton supprimer">Suppr</button>
                 </div>
             </td>
         `;
