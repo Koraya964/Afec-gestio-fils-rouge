@@ -229,7 +229,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (helpForm) {
     helpForm.addEventListener("submit", (e) => {
-      e.preventDefault();
       showMessage(document.getElementById("sos-message"), "✅ Votre message a bien été envoyé !");
       helpForm.reset();
     });
