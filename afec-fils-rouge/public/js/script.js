@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  
+
 
   // ===============================
   // Wizard multi-étapes
@@ -168,6 +168,18 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!allValid) {
       btn.classList.add('shake');
       setTimeout(() => btn.classList.remove('shake'), 300);
+    }
+
+    // Remplir le résumé avant de passer à l'étape 3
+    if (currentStep === 1 && allValid) {
+      document.getElementById("review-displayName").textContent =
+        document.getElementById("displayName").value;
+
+      document.getElementById("review-email").textContent =
+        document.getElementById("email").value;
+
+      document.getElementById("review-phoneNumber").textContent =
+        document.getElementById("phoneNumber").value;
     }
 
     if (allValid && currentStep < steps.length - 1) {
