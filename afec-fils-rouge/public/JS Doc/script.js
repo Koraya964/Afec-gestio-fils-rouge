@@ -26,6 +26,47 @@ document.addEventListener("DOMContentLoaded", () => {
   if (closeSidebarBtn) closeSidebarBtn.addEventListener('click', closeSidebar);
   if (overlay) overlay.addEventListener('click', closeSidebar);
 
+  // setup étoile pour netlify
+
+  function setupStars(starContainerId, inputId) {
+    const stars = document.querySelectorAll(`#${starContainerId} span`);
+    const hiddenInput = document.getElementById(inputId);
+
+    stars.forEach(star => {
+      star.addEventListener('click', () => {
+        hiddenInput.value = star.dataset.value;
+
+        // Mettre à jour le style des étoiles sélectionnées
+        stars.forEach(s => {
+          if (s.dataset.value <= star.dataset.value) {
+            s.classList.add('text-yellow-400');
+          } else {
+            s.classList.remove('text-yellow-400');
+          }
+        });
+      });
+    });
+  }
+
+  // Initialisation
+  setupStars('ergonomie-stars', 'ergonomie-rating');
+  setupStars('design-stars', 'design-rating');
+  setupStars('contenu-stars', 'contenu-rating');
+
+  // Message de confirmation Netlify
+  document.getElementById('multi-rating-form').addEventListener('submit', function (e) {
+    const messageEl = document.getElementById('message');
+    setTimeout(() => {
+      messageEl.textContent = "Merci pour votre feedback !";
+      this.reset();
+      // Reset des étoiles
+      document.querySelectorAll('#ergonomie-stars span, #design-stars span, #contenu-stars span').forEach(s => s.classList.remove('text-yellow-400'));
+    }, 100); // délai pour que Netlify capture le submit
+  });
+
+
+
+
   /* ============================
     TABS PARAMÈTRES
   ============================ */
@@ -236,7 +277,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (feedbackForm) {
     feedbackForm.addEventListener("submit", (e) => {
-      e.preventDefault();
       showMessage(document.getElementById("message"), "✅ Merci pour votre feedback !");
       feedbackForm.reset();
     });
