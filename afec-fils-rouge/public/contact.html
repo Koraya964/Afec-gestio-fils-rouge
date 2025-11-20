@@ -207,26 +207,42 @@
         </ul>
     </nav>
 
-
-    <!-- Main Content -->
+    <!-- Main -->
     <main class="max-w-2xl mx-auto mt-24 p-6 space-y-10 flex-1">
 
         <!-- Section Urgente -->
         <section class="bg-gray-800 rounded-xl p-6 shadow-lg text-center">
             <h2 class="text-2xl font-bold text-custom-blue mb-4">Contact Rapide / Problème urgent</h2>
             <p class="mb-4 text-gray-300">Problème urgent ? Envoyez-nous un message rapide.</p>
-            <form id="help-form" class="space-y-4">
-                <input type="text" placeholder="Identifiant Publique"
-                    class="w-full p-3 rounded bg-gray-700 text-white  invalid:border-red-700 invalid:text-white focus:border-sky-500 focus:outline focus:outline-sky-500 focus:invalid:border-red-700 focus:invalid:outline-red-700 disabled:border-gray-200 disabled:bg-gray-50 disabled:text-gray-500 disabled:shadow-none dark:disabled:border-gray-700 dark:disabled:bg-gray-800/20"
+
+            <!-- FORMULAIRE NETLIFY READY -->
+            <form id="help-form" name="help" method="POST" data-netlify="true" netlify-honeypot="bot-field"
+                class="space-y-4">
+
+                <!-- champs caché pour Netlify -->
+                <input type="hidden" name="form-name" value="help">
+                <input type="hidden" name="bot-field">
+
+                <!-- Identifiant -->
+                <input type="text" name="identifiant" placeholder="Identifiant Publique"
+                    class="w-full p-3 rounded bg-gray-700 text-white invalid:border-red-700 focus:border-sky-500"
                     required minlength="8" maxlength="64">
-                <input type="email" placeholder="Email"
-                    class="w-full p-3 rounded bg-gray-700 text-white  invalid:border-red-700 invalid:text-white focus:border-sky-500 focus:outline focus:outline-sky-500 focus:invalid:border-red-700 focus:invalid:outline-red-700 disabled:border-gray-200 disabled:bg-gray-50 disabled:text-gray-500 disabled:shadow-none dark:disabled:border-gray-700 dark:disabled:bg-gray-800/20"
+
+                <!-- Email -->
+                <input type="email" name="email" placeholder="Email"
+                    class="w-full p-3 rounded bg-gray-700 text-white invalid:border-red-700 focus:border-sky-500"
                     required minlength="8" maxlength="64">
-                <textarea placeholder="Décrivez votre problème..."
-                    class="w-full p-3 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-custom-blue"
-                    rows="5" maxlength="255" required></textarea>
+
+                <!-- Message -->
+                <textarea name="message" placeholder="Décrivez votre problème..."
+                    class="w-full p-3 rounded bg-gray-700 text-white focus:ring-2 focus:ring-custom-blue" rows="5"
+                    maxlength="255" required></textarea>
+
                 <button type="submit"
-                    class="w-full bg-cyan-400 text-black font-bold py-2 rounded hover:bg-blue-600 transition cursor-pointer">Envoyer</button>
+                    class="w-full bg-cyan-400 text-black font-bold py-2 rounded hover:bg-blue-600 transition cursor-pointer">
+                    Envoyer
+                </button>
+
                 <p id="sos-message" class="text-green-400 font-semibold"></p>
             </form>
         </section>
@@ -235,34 +251,53 @@
         <section class="bg-gray-800 rounded-xl p-6 shadow-lg">
             <h2 class="text-2xl font-bold text-custom-blue mb-4 text-center">Feedback sur BBH</h2>
             <p class="mb-6 text-center text-gray-300">Donnez votre avis sur l’ergonomie, le design et le contenu.</p>
-            <form id="multi-rating-form" name="multi-rating-form" class="space-y-6" method="POST" data-netlify="true"
-                netlify-honeypot="bot-field">
+
+            <!-- FORMULAIRE NETLIFY READY -->
+            <form id="multi-rating-form" name="feedback" method="POST" data-netlify="true" netlify-honeypot="bot-field"
+                class="space-y-6">
+
+                <!-- champs caché pour Netlify -->
+                <input type="hidden" name="form-name" value="feedback">
+                <input type="hidden" name="bot-field">
+
+                <!-- champs caché pour Netlify/étoiles -->
+                <input type="hidden" id="ergonomie-rating" name="ergonomie">
+                <input type="hidden" id="design-rating" name="design">
+                <input type="hidden" id="contenu-rating" name="contenu">
 
                 <!-- Ergonomie -->
                 <div>
-                    <label for="ergonomie-stars" class="block mb-2 font-semibold text-custom-blue">Ergonomie :</label>
+                    <label class="block mb-2 font-semibold text-custom-blue">Ergonomie :</label>
                     <div id="ergonomie-stars" class="flex space-x-1 text-2xl cursor-pointer">
-                        <span data-value="1">★</span><span data-value="2">★</span><span data-value="3">★</span><span
-                            data-value="4">★</span><span data-value="5">★</span>
+                        <span data-value="1">★</span>
+                        <span data-value="2">★</span>
+                        <span data-value="3">★</span>
+                        <span data-value="4">★</span>
+                        <span data-value="5">★</span>
                     </div>
                 </div>
 
                 <!-- Design -->
                 <div>
-                    <label for="design-stars" class="block mb-2 font-semibold text-custom-blue">Design :</label>
+                    <label class="block mb-2 font-semibold text-custom-blue">Design :</label>
                     <div id="design-stars" class="flex space-x-1 text-2xl cursor-pointer">
-                        <span data-value="1">★</span><span data-value="2">★</span><span data-value="3">★</span><span
-                            data-value="4">★</span><span data-value="5">★</span>
+                        <span data-value="1">★</span>
+                        <span data-value="2">★</span>
+                        <span data-value="3">★</span>
+                        <span data-value="4">★</span>
+                        <span data-value="5">★</span>
                     </div>
                 </div>
 
                 <!-- Contenu -->
                 <div>
-                    <label for="contenu-stars" class="block mb-2 font-semibold text-custom-blue">Qualité du contenu
-                        :</label>
+                    <label class="block mb-2 font-semibold text-custom-blue">Qualité du contenu :</label>
                     <div id="contenu-stars" class="flex space-x-1 text-2xl cursor-pointer">
-                        <span data-value="1">★</span><span data-value="2">★</span><span data-value="3">★</span><span
-                            data-value="4">★</span><span data-value="5">★</span>
+                        <span data-value="1">★</span>
+                        <span data-value="2">★</span>
+                        <span data-value="3">★</span>
+                        <span data-value="4">★</span>
+                        <span data-value="5">★</span>
                     </div>
                 </div>
 
@@ -270,37 +305,36 @@
                 <div>
                     <label for="comment" class="block mb-2 font-semibold text-custom-blue">Votre commentaire :</label>
                     <textarea id="comment" name="comment" rows="5" placeholder="Écrivez votre avis ici..."
-                        class="w-full p-3 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-custom-blue"
-                        required maxlength="255"></textarea>
+                        class="w-full p-3 rounded bg-gray-700 text-white focus:ring-2 focus:ring-custom-blue" required
+                        maxlength="255"></textarea>
                 </div>
 
                 <button type="submit"
                     class="w-full bg-cyan-500 text-black font-bold py-2 rounded hover:bg-blue-600 transition cursor-pointer">
                     Envoyer
                 </button>
+
                 <p id="message" class="mt-4 text-green-400 text-center font-semibold"></p>
             </form>
         </section>
 
-        <!-- Section FAQ -->
+        <!-- FAQ inchangée -->
         <section class="bg-gray-800 rounded-xl p-6 shadow-lg">
-            <h2 class="text-2xl font-bold text-custom-blue mb-4 text-center"> Aide & FAQ</h2>
+            <h2 class="text-2xl font-bold text-custom-blue mb-4 text-center">Aide & FAQ</h2>
             <ul class="space-y-3 text-gray-300">
-                <li> Comment réinitialiser mon mot de passe ? <a href="mdr_reset.html"
-                        aria-label="Savoir comment modifier votre mot de passe"
+                <li>Comment réinitialiser mon mot de passe ? <a href="mdr_reset.html"
                         class="text-custom-blue underline hover:text-cyan-600">Voir la réponse</a></li>
-                <li> Comment télécharger BBH ? <a href="Téléchargement.html"
-                        aria-label="Aide au téléchargement de l'app bbh"
+                <li>Comment télécharger BBH ? <a href="Téléchargement.html"
                         class="text-custom-blue underline hover:text-cyan-600">Voir la réponse</a></li>
-                <li> Où trouver mes documents ? <a href="client_doc.html"
-                        class="text-custom-blue underline hover:text-cyan-600"
-                        aria-label="comment récupérer vos documents">Voir
-                        la réponse</a></li>
+                <li>Où trouver mes documents ? <a href="client_doc.html"
+                        class="text-custom-blue underline hover:text-cyan-600">Voir la réponse</a></li>
             </ul>
             <p class="mt-4 text-gray-400 text-sm text-center">Pour tout problème non listé, utilisez la section
-                d'urgence (pour les problèmes critique) ou le formulaire de feedback.</p>
+                d'urgence ou le formulaire de feedback.</p>
         </section>
+
     </main>
+
 
     <!-- FOOTER -->
     <footer
