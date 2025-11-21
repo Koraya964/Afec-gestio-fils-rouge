@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="ressources graphique/css/register.css">
     <link rel="icon" type="image/png" sizes="32x32" href="images/BBH-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="images/BBH-16x16.png">
-    <script src="JS Doc/script.js"></script>
+    <script src="JS Doc/script.js" defer></script>
+    <link href="ressources graphique/css/register.css" rel="stylesheet">
     <link href="ressources graphique/css/styletailwind.css" rel="stylesheet">
 </head>
 
@@ -92,8 +93,8 @@
         <hr class="mt-4 ">
 
         <!-- Liens -->
-        <ul class="mt-6 mb-9 flex-col gap-4 text-center sm:text-left flex sm:hidden">
-            <li>
+        <ul class="mt-6 mb-9 flex-col gap-4 text-center sm:text-left flex ">
+            <li class="sm:hidden">
                 <a href="index.html"
                     class="flex items-center gap-2 text-gray-100 hover:text-sky-400 transition-colors ">
                     <svg class="w-7 h-7 fill-white hover:fill-sky-400 transition-colors duration-300 cursor-pointer"
@@ -108,7 +109,7 @@
                     </svg></span> Accueil
                 </a>
             </li>
-            <li>
+            <li class="sm:hidden">
                 <a href="à_propos.html"
                     class="flex items-center gap-2 text-gray-100 hover:text-sky-400 transition-colors">
                     <span><svg
@@ -124,7 +125,7 @@
                         </svg></span> À propos
                 </a>
             </li>
-            <li>
+            <li class="sm:hidden">
                 <a href="Téléchargement.html"
                     class="flex items-center gap-2 text-gray-100 hover:text-sky-400 transition-colors">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
@@ -136,7 +137,7 @@
                     </span> Téléchargement
                 </a>
             </li>
-            <li>
+            <li class="sm:hidden">
                 <a href="contact.html"
                     class="flex items-center gap-2 text-gray-100 hover:text-sky-400 transition-colors">
                     <svg class="w-6 h-6 fill-white hover:fill-sky-400 transition-colors duration-300 cursor-pointer"
@@ -148,7 +149,7 @@
                     </span> Contact
                 </a>
             </li>
-            <li>
+            <li class="sm:hidden">
                 <a href="certification.html"
                     class="flex items-center gap-2 text-gray-100 hover:text-sky-400 transition-colors">
                     <span><svg
@@ -206,116 +207,101 @@
     </nav>
 
     <!-- MAIN -->
-    <main class="flex-1 flex items-center justify-center pt-20 px-4 ">
-        <div class="w-full max-w-2xl bg-slate-800 rounded-xl shadow-lg p-8">
+<main class="flex-grow flex items-center justify-center p-6 pt-24">
+    <div class="w-full max-w-2xl bg-gray-800/90 backdrop-blur p-8 rounded-xl shadow-2xl border border-gray-700">
+        
+        <h2 class="text-3xl font-bold text-center text-sky-400 mb-6">Création de compte</h2>
 
-            <!-- Progress bar -->
-            <div class="w-full bg-slate-700 rounded-full h-2 mb-6">
-                <div id="progress" class="bg-sky-500 h-2 rounded-full transition-all duration-300"></div>
+        <div class="w-full bg-gray-700 h-2 rounded-full mb-8 relative overflow-hidden">
+            <div id="progress" class="bg-sky-500 h-full transition-all duration-300 ease-out" style="width: 0%"></div>
+        </div>
+
+        <form id="wizardForm" action="register_action.php" method="POST" novalidate>
+            
+            <div class="step transition-opacity duration-300">
+                <h3 class="text-xl font-semibold text-white mb-4">Informations personnelles</h3>
+                
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm text-gray-400 mb-1">Nom d'utilisateur</label>
+                        <input type="text" id="displayName" name="displayName" required minlength="3"
+                            class="w-full bg-gray-700 border border-gray-600 rounded p-3 text-white focus:border-sky-500 focus:ring-1 focus:ring-sky-500 outline-none transition"
+                            placeholder="Votre pseudo">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm text-gray-400 mb-1">Email</label>
+                        <input type="email" id="email" name="email" required
+                            class="w-full bg-gray-700 border border-gray-600 rounded p-3 text-white focus:border-sky-500 outline-none transition"
+                            placeholder="exemple@mail.com">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm text-gray-400 mb-1">Téléphone</label>
+                        <input type="tel" id="phoneNumber" name="phoneNumber" required pattern="[0-9]{10}"
+                            class="w-full bg-gray-700 border border-gray-600 rounded p-3 text-white focus:border-sky-500 outline-none transition"
+                            placeholder="0612345678">
+                    </div>
+                </div>
+
+                <div class="flex justify-end mt-6">
+                    <button type="button" class="next bg-sky-600 hover:bg-sky-500 text-white px-6 py-2 rounded font-semibold transition">
+                        Suivant &rarr;
+                    </button>
+                </div>
             </div>
 
-            <form class="space-y-6">
-
-                <!-- STEP 1 : infos compte -->
-                <div class="step space-y-4">
-                    <h2 class="text-xl font-semibold text-sky-400">Étape 1 : Informations de compte</h2>
+            <div class="step hidden transition-opacity duration-300">
+                <h3 class="text-xl font-semibold text-white mb-4">Sécurité</h3>
+                
+                <div class="space-y-4">
                     <div>
-                        <label for="displayName" class="block text-sm">Nom d'utilisateur</label>
-                        <input id="displayName" type="text" placeholder="Alice Dupont" required minlength="3"
-                            maxlength="20" autocomplete="off"
-                            class="w-full p-2 mt-1 rounded bg-slate-900 border border-slate-600 focus:border-sky-500">
-                    </div>
-                    <div>
-                        <label for="email" class="block text-sm">Adresse e-mail</label>
-                        <input id="email" type="email" placeholder="exemple@domaine.com" required minlength="8"
-                            maxlength="64" autocomplete="off"
-                            class="w-full p-2 mt-1 rounded bg-slate-900 border border-slate-600 focus:border-sky-500">
-                    </div>
-                    <div class="flex justify-end">
-                        <button type="button"
-                            class="next bg-sky-500 hover:bg-sky-600 text-slate-900 font-semibold rounded px-4 py-2 cursor-pointer">Suivant
-                            →</button>
-                    </div>
-                    <hr>
-                    <div class="text-center space-y-3">
-                        <p class="text-sm text-slate-50 italic">Ou continuer avec :</p>
-                        <div class="flex flex-wrap justify-center gap-3">
-                            <button type="button"
-                                class="flex items-center gap-2 bg-white text-slate-900 px-4 py-2 rounded shadow"><img
-                                    src="images/Google 40x40.png" class="h-5" alt="Google.com"> Google</button>
-                            <button type="button"
-                                class="flex items-center gap-2 bg-slate-900 border border-slate-600 px-4 py-2 rounded"><img
-                                    src="images/X 45x45.png" class="h-5" alt="X.com"> X</button>
-                            <button type="button"
-                                class="flex items-center gap-2 bg-blue-500 text-white px-4 py-2 rounded"><img
-                                    src="images/Facebook 45x45.png" class="h-5" alt="Facebook.com"> Facebook</button>
+                        <label class="block text-sm text-gray-400 mb-1">Mot de passe Maître</label>
+                        <input type="password" id="masterPassword" name="password" required minlength="8"
+                            class="w-full bg-gray-700 border border-gray-600 rounded p-3 text-white focus:border-sky-500 outline-none transition">
                         </div>
+
+                    <div>
+                        <label class="block text-sm text-gray-400 mb-1">Confirmer le mot de passe</label>
+                        <input type="password" id="confirmPassword" required
+                            class="w-full bg-gray-700 border border-gray-600 rounded p-3 text-white focus:border-sky-500 outline-none transition">
+                        <p id="confirm-msg" class="text-sm mt-1 h-5"></p>
                     </div>
                 </div>
 
-                <!-- STEP 2 : sécurité -->
-                <div class="step hidden space-y-4">
-                    <h2 class="text-xl font-semibold text-sky-400">Étape 2 : Sécurité</h2>
-                    <div>
-                        <label for="masterPassword" class="block text-sm">Mot de Passe Maître: </label>
-                        <input id="masterPassword" type="password" placeholder="Mot de passe maître" required
-                            minlength="8" maxlength="64" autocomplete="off"
-                            class="w-full p-2 mt-1 rounded bg-slate-900 border border-slate-600 focus:border-sky-500">
-                        <p class="text-xs text-slate-400 mt-1">≥ 12 caractères, majuscules, minuscules, chiffres,
-                            symboles</p>
-                    </div>
-                    <div>
-                        <label for="confirmPassword" class="block text-sm">Confirmer le mot de passe</label>
-                        <input id="confirmPassword" type="password" placeholder="Retapez le mot de passe" required
-                            minlength="8" maxlength="64" autocomplete="off"
-                            class="w-full p-2 mt-1 rounded bg-slate-900 border border-slate-600 focus:border-sky-500">
-                    </div>
-                    <div>
-                        <label for="phoneNumber" class="block text-sm">Numéro de téléphone</label>
-                        <input id="phoneNumber" type="tel" placeholder="+33 6 12 34 56 78" required autocomplete="off"
-                            pattern="^\+?\d{1,3} ?\d{1,2} ?\d{2} ?\d{2} ?\d{2} ?\d{0,2}$" minlength="8" maxlength="64"
-                            class="w-full p-2 mt-1 rounded bg-slate-900 border border-slate-600 focus:border-sky-500">
-                    </div>
-                    <div class="flex justify-between">
-                        <button type="button"
-                            class="prev bg-slate-600 hover:bg-slate-700 text-white rounded px-4 py-2 cursor-pointer">← Retour</button>
-                        <button type="button"
-                            class="next bg-sky-500 hover:bg-sky-600 text-slate-900 font-semibold rounded px-4 py-2 cursor-pointer">Suivant
-                            →</button>
-                    </div>
+                <div class="flex justify-between mt-6">
+                    <button type="button" class="prev bg-gray-600 hover:bg-gray-500 text-white px-6 py-2 rounded font-semibold transition">
+                        &larr; Précédent
+                    </button>
+                    <button type="button" class="next bg-sky-600 hover:bg-sky-500 text-white px-6 py-2 rounded font-semibold transition">
+                        Suivant &rarr;
+                    </button>
+                </div>
+            </div>
+
+            <div class="step hidden transition-opacity duration-300">
+                <h3 class="text-xl font-semibold text-white mb-4">Vérification</h3>
+                
+                <div class="bg-gray-700/50 p-4 rounded border border-gray-600 space-y-3 text-sm">
+                    <p><span class="text-gray-400">Nom :</span> <span id="review-displayName" class="font-bold text-white"></span></p>
+                    <p><span class="text-gray-400">Email :</span> <span id="review-email" class="font-bold text-white"></span></p>
+                    <p><span class="text-gray-400">Téléphone :</span> <span id="review-phoneNumber" class="font-bold text-white"></span></p>
+                    <p><span class="text-gray-400">Mot de passe :</span> <span class="text-green-400">Défini</span></p>
                 </div>
 
-                <!-- STEP 3 : options & validation -->
-                <div class="step hidden space-y-4">
-                    <h2 class="text-xl font-semibold text-sky-400">Étape 3 : Validation</h2>
-
-                    <!-- Résumé automatique -->
-                    <div class="bg-slate-700 p-4 rounded space-y-2 text-slate-200">
-                        <h3 class="font-semibold text-sky-400">Résumé de vos informations</h3>
-                        <p>Nom d'utilisateur : <span id="review-displayName"></span></p>
-                        <p>Adresse e-mail : <span id="review-email"></span></p>
-                        <p>Numéro de téléphone : <span id="review-phoneNumber"></span></p>
-                    </div>
-
-                    <div class="flex items-center gap-2">
-                        <input id="terms" type="checkbox" required class="accent-sky-500">
-                        <label for="terms" class="text-sm">J'accepte les <a href="terms.html"
-                                class="text-sky-400">conditions</a> et la <a href="privacy.html"
-                                class="text-sky-400">confidentialité</a></label>
-                    </div>
-
-                    <div class="flex justify-between">
-                        <button type="button"
-                            class="prev bg-slate-600 hover:bg-slate-700 text-white rounded px-4 py-2 cursor-pointer">← Retour</button>
-                        <button type="submit"
-                            class=" from-sky-400 to-sky-500 text-slate-900 font-bold rounded px-4 py-2 cursor-pointer">Créer
-                            mon compte</button>
-                    </div>
+                <div class="flex justify-between mt-6">
+                    <button type="button" class="prev bg-gray-600 hover:bg-gray-500 text-white px-6 py-2 rounded font-semibold transition">
+                        &larr; Modifier
+                    </button>
+                    <button type="submit" class="bg-green-600 hover:bg-green-500 text-white px-8 py-2 rounded font-bold shadow-lg transform hover:scale-105 transition">
+                        Créer mon compte
+                    </button>
                 </div>
+            </div>
 
-            </form>
-        </div>
-    </main>
+        </form>
+    </div>
+</main>
 
     <!-- FOOTER -->
     <footer
