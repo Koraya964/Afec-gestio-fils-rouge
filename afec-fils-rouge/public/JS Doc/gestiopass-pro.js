@@ -14,8 +14,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     const ATTEMPTS_KEY = 'pm_attempts_v1';
     const LOCK_UNTIL_KEY = 'pm_lock_until_v1';
 
-    const ARGON2_PARAMS = { time: 3, mem: 65536, parallelism: 1, hashLen: 32 }; // mem in KiB (64MiB)
-    const PBKDF2_ITERATIONS = 100000;
+    const ARGON2_PARAMS = { time: 3, mem: 65536, parallelism: 1, hashLen: 32 }; // mem in KiB (64MiB) vu sur reddit
+    const PBKDF2_ITERATIONS = 100000; // Même chose qu'argon 
     const AES_ALGO = 'AES-GCM';
     const AES_KEY_LENGTH = 256;
 
